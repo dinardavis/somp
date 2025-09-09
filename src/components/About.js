@@ -1,297 +1,396 @@
-import React, { useState, useEffect } from "react";
+// About.jsx
+import React, { useEffect, useState } from "react";
+import {
+  FiBookOpen,
+  FiMapPin,
+  FiPieChart,
+  FiFilm,
+  FiMail,
+  FiClock,
+  FiGlobe,
+  FiCheckCircle,
+} from "react-icons/fi";
+import { TbConfetti, TbPigMoney } from "react-icons/tb";
+import { LuIceCreamBowl } from "react-icons/lu";
 
-function About() {
-  const [isVisible, setIsVisible] = useState(false);
+function AboutEyebrow({ children }) {
+  return <p className="about-eyebrow">{children}</p>;
+}
+
+function AboutSectionHeader({ eyebrow, title, lead }) {
+  return (
+    <header className="about-section-header">
+      {eyebrow && <AboutEyebrow>{eyebrow}</AboutEyebrow>}
+      <h2 className="about-section-title">{title}</h2>
+      {lead && <p className="about-section-lead">{lead}</p>}
+    </header>
+  );
+}
+
+function AboutCard({ icon: Icon, title, children, className = "" }) {
+  return (
+    <article className={`about-card ${className}`}>
+      {Icon && (
+        <div className="about-card-icon" aria-hidden="true">
+          <Icon size={22} />
+        </div>
+      )}
+      {title && <h3 className="about-card-title">{title}</h3>}
+      <div className="about-card-body">{children}</div>
+    </article>
+  );
+}
+
+function AboutIconPill({ icon: Icon, children }) {
+  return (
+    <span className="about-icon-pill">
+      <span className="about-icon" aria-hidden="true">
+        <Icon size={16} />
+      </span>
+      <span>{children}</span>
+    </span>
+  );
+}
+
+export default function About() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Trigger initial animations
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 200);
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("about-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+    );
 
-    // Add scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
+    document
+      .querySelectorAll(".about-section")
+      .forEach((sec) => observer.observe(sec));
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, observerOptions);
-
-    // Observe elements for scroll animations
-    const elements = document.querySelectorAll(".scroll-animate");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
+
+  const handleInputChange = (e) => {
+    setContactForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
-    // In a real app, you'd send this to your backend
-    console.log("Contact form submitted:", contactForm);
     setIsSubmitted(true);
     setContactForm({ name: "", email: "", message: "" });
   };
 
-  const handleInputChange = (e) => {
-    setContactForm({
-      ...contactForm,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
-    <div className={`about-page ${isVisible ? "visible" : ""}`}>
-      {/* Hero Section */}
-      <section className="about-hero">
-        <div className="about-hero-container">
-          <div className="about-hero-content">
-            <h1 className="about-hero-title">About seatofmyplans</h1>
-            <p className="about-hero-subtitle">
-              Practical courage for people who want a bigger life.
-            </p>
-          </div>
-        </div>
-      </section>
+    <main className="about-page">
 
-      {/* Introduction Section */}
-      <section className="about-intro scroll-animate">
-        <div className="about-intro-container">
-          <div className="about-intro-content">
-            <h2>Hey, I'm Dinar.</h2>
-            <p>
-              I was born in Hiroshima, raised mostly in California, and I've
-              basically been in motion ever since. Family legend says I took my
-              first steps in an airport during a 32-hour odyssey of missed
-              flights from Japan to the U.S. If you're wondering how I ended up
-              building a life around travel… yeah, that tracks.
-            </p>
-            <p>
-              Since then I've traveled to 20+ countries and lived in 11. In
-              2022, I left for "a couple months." It turned into two years and a
-              very convincing answer to the question, "What if I just kept
-              going?"
-            </p>
-          </div>
-          <div className="about-intro-image">
+      {/* Hero */}
+      <section className="about-section about-hero">
+        <div className="about-section-content about-hero-inner">
+          <div className="about-hero-copy">
+            <p className="about-eyebrow">About</p>
+            <h1 className="about-hero-title">
+              The guy behind{" "}
+              
+            </h1>
             <img
-              src="/images/me_cheers.jpg"
-              alt="Dinar cheers"
-              className="intro-photo"
+                src="/images/somp.png"
+                alt="Seat Of My Plans"
+                className="about-hero-logo"
+              />
+            <p className="about-hero-lead">Practical moves for a life you enjoy.</p>
+          </div>
+
+          <div className="about-hero-media">
+            <div className="about-media">
+              <img
+                src="/images/me_cheers.jpg"
+                alt="Dinar in Bangkok"
+                className="about-media-img"
+              />
+              <div className="about-media-tag">
+                <AboutIconPill icon={FiMapPin}>Bangkok, Thailand</AboutIconPill>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Story */}
+      <section className="about-section about-story about-section--white">
+        <div className="about-section-content about-split">
+          <div className="about-col">
+            <div className="about-media about-media--tall the-story-img">
+              <img
+                src="/images/me_songkran.png"
+                alt="Dinar at Songkran"
+                className="about-media-img "
+              />
+              <div className="about-media-tag">
+                <AboutIconPill icon={TbConfetti}>Songkran Festival</AboutIconPill>
+              </div>
+            </div>
+          </div>
+
+          <div className="about-col">
+            <AboutSectionHeader
+              eyebrow="The story"
+              title="Hi, I’m Dinar."
+              lead="Airports were the backdrop. I took my first steps between flights."
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="about-mission scroll-animate">
-        <div className="about-mission-container">
-          <h2>What seatofmyplans is</h2>
-          <p className="mission-intro">
-            A friendly toolkit for big moves and better days:
-          </p>
-          <div className="mission-features">
-            <div className="mission-feature">
-              <h3>Playbooks for relocating</h3>
-              <p>Without burning your life down</p>
-            </div>
-            <div className="mission-feature">
-              <h3>City cheat sheets</h3>
-              <p>Bangkok now; more countries rolling out</p>
-            </div>
-            <div className="mission-feature">
-              <h3>Budgets & templates</h3>
-              <p>That work in the real world</p>
-            </div>
-            <div className="mission-feature">
-              <h3>Stories with the bloopers left in</h3>
-              <p>Because that's where the learning lives</p>
-            </div>
-          </div>
-          <p className="mission-closing">
-            I share what I try, what breaks, and what I fix—so you can skip a
-            few potholes and get where you're going faster.
-          </p>
-        </div>
-      </section>
-
-      {/* Beliefs Section */}
-      <section className="about-beliefs scroll-animate">
-        <div className="about-beliefs-container">
-          <h2>What I believe</h2>
-          <div className="beliefs-grid">
-            <div className="belief-item">
-              <h3>Fun is a strategy</h3>
-              <p>If it's miserable, it won't be sustainable.</p>
-            </div>
-            <div className="belief-item">
-              <h3>Small bets > giant leaps</h3>
-              <p>Try the thing, learn, adjust, repeat.</p>
-            </div>
-            <div className="belief-item">
-              <h3>Money buys time and options</h3>
+            <div className="about-prose">
               <p>
-                Plan your runway so adventure isn't panic wearing a cute hat.
+                I was born in Hiroshima and grew up in California. I have lived in 11 countries and visited many more. In 2022 I left for a short trip. It turned into two years and a better way to live.
+              </p>
+              <p>
+                I try things, show the work, and keep what holds up in real life.
               </p>
             </div>
-            <div className="belief-item">
-              <h3>Home is a skill</h3>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Mission / Features */}
+      <section className="about-section about-mission about-tint-peach">
+        <div className="about-section-content">
+          <AboutSectionHeader
+            eyebrow="The mission"
+            title="What Seat Of My Plans does"
+            lead="Tools and stories for big moves that still feel human."
+          />
+          <blockquote className="about-pull-quote">
+            I share the process so you skip a few potholes and get where you’re going sooner.
+          </blockquote>
+
+          <div className="about-feature-grid">
+            <AboutCard icon={FiBookOpen} title="Relocation playbooks">
+              <p>Clear steps you can follow and repeat.</p>
+            </AboutCard>
+            <AboutCard icon={FiMapPin} title="City cheat sheets">
+              <p>Neighborhoods, costs, and how to land on your feet.</p>
+            </AboutCard>
+            <AboutCard icon={TbPigMoney} title="Budgets and templates">
+              <p>Simple tools that help you decide faster.</p>
+            </AboutCard>
+            <AboutCard icon={FiFilm} title="Videos with real lessons">
+              <p>What worked, what failed, and how I fixed it.</p>
+            </AboutCard>
+          </div>
+        </div>
+      </section>
+
+      {/* Beliefs */}
+      <section className="about-section about-beliefs">
+        <div className="about-section-content">
+          <AboutSectionHeader
+            eyebrow="The philosophy"
+            title="What I believe"
+          />
+          <div className="about-beliefs-grid">
+            <AboutCard title="Fun is a strategy">
+              <p>If it feels miserable, you will not keep doing it.</p>
+            </AboutCard>
+            <AboutCard title="Small bets beat giant leaps">
+              <p>Test, learn, adjust, repeat.</p>
+            </AboutCard>
+            <AboutCard title="Money buys time and options">
+              <p>Build a runway so adventure is a plan, not a panic.</p>
+            </AboutCard>
+            <AboutCard title="Home is a skill">
               <p>You can learn to build it anywhere.</p>
+            </AboutCard>
+            <AboutCard title="Tell the truth">
+              <p>About costs, visas, loneliness, wins. All of it.</p>
+            </AboutCard>
+          </div>
+        </div>
+      </section>
+
+      {/* Personal Snapshot */}
+      <section className="about-section about-personal about-tint-blue">
+        <div className="about-section-content about-split">
+          <div className="about-col">
+            <AboutSectionHeader eyebrow="The person" title="My kind of day" />
+            <div className="about-prose">
+              <p>
+                I like a good bar and a quiet pub. I will always pick the strawberry option. Overcast days feel like home.
+              </p>
             </div>
-            <div className="belief-item">
-              <h3>Tell the truth</h3>
-              <p>About costs, visas, loneliness, wins—the whole thing.</p>
+
+            <ul className="about-details">
+              <li>
+                <span className="about-detail-label">Favorite drink:</span>{" "}
+                <span>Strawberry anything</span>
+              </li>
+              <li>
+                <span className="about-detail-label">Current city:</span>{" "}
+                <span>Bangkok, Thailand</span>
+              </li>
+              <li>
+                <span className="about-detail-label">Weather preference:</span>{" "}
+                <span>Overcast and cozy</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="about-col">
+            <div className="about-media the-person-img">
+              <img
+                src="/images/gelato.jpg"
+                alt="Strawberry gelato in Istanbul"
+                className="about-media-img"
+              />
+               <div className="about-media-tag">
+                <AboutIconPill icon={LuIceCreamBowl}>Gelato in Istanbul</AboutIconPill>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Personal Section */}
-      <section className="about-personal scroll-animate">
-        <div className="about-personal-container">
-          <div className="about-personal-image">
-            <img
-              src="/images/me_songkran.png"
-              alt="Dinar at Songkran festival"
-              className="personal-photo"
-            />
-          </div>
-          <div className="about-personal-content">
-            <h2>My kind of day</h2>
-            <p>
-              I love getting dressed up and settling into a beautiful bar for a
-              proper cocktail… and I also love a beer at a neighborhood pub
-              where the floor is doing its best. I will always pick the
-              strawberry option on any menu (sorry, not sorry). And overcast
-              days? They smell like home.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Newsletter CTA */}
+      <section className="about-section about-newsletter">
+        <div className="about-section-content">
+          <div className="about-newsletter-card">
+            <div className="about-newsletter-copy">
+              <h2 className="about-section-title">Start your move</h2>
+              <p className="about-section-lead">
+                Join the newsletter and get the Bangkok Starter Kit. I send practical tools, real costs, and small challenges you can finish in a weekend.
+              </p>
+            </div>
 
-      {/* Journey Section */}
-      <section className="about-journey scroll-animate">
-        <div className="about-journey-container">
-          <h2>How I got here (the short version)</h2>
-          <div className="journey-steps">
-            <div className="journey-step">
-              <h3>Born in Hiroshima, raised in California</h3>
-              <p>Traveled my whole life.</p>
-            </div>
-            <div className="journey-step">
-              <h3>Took my first steps in an airport</h3>
-              <p>During a long-haul chaos parade.</p>
-            </div>
-            <div className="journey-step">
-              <h3>2022: left for "a couple months"</h3>
-              <p>Kept the suitcase rolling for two years.</p>
-            </div>
-            <div className="journey-step">
-              <h3>Now: helping you design a life you actually enjoy</h3>
-              <p>Where "someday" has a date.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter CTA Banner */}
-      <section className="newsletter-banner">
-        <div className="newsletter-banner-container">
-          <div className="newsletter-banner-content">
-            <h2>Ready to start your adventure?</h2>
-            <p>
-              Join the newsletter and grab the Bangkok Starter Kit now. Next up:
-              quick-hit Country Cheat Sheets, a Runway Calculator, and a 30-Day
-              Life Reboot that doesn't require perfection (or kale).
-            </p>
-            <div className="newsletter-banner-form">
+            <form
+              className="about-newsletter-form"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="newsletter-banner-input"
+                aria-label="Email"
               />
-              <button className="btn btn-primary">Get the Starter Kit</button>
-            </div>
-            <p className="newsletter-banner-note">
-              Zero spam. Occasional bad jokes. Unsubscribe anytime.
-            </p>
+              <button className="about-btn about-btn-primary" type="submit">
+                Get the Starter Kit
+              </button>
+            </form>
+
+            <p className="about-form-note">Zero spam. Unsubscribe anytime.</p>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="about-contact scroll-animate">
-        <div className="about-contact-container">
-          <h2>Get in touch</h2>
+      {/* Contact */}
+      <section className="about-section about-contact">
+        <div className="about-section-content">
+          <AboutSectionHeader
+            eyebrow="Let’s connect"
+            title="Get in touch"
+            lead="Questions or wins. I read every message."
+          />
+
           {isSubmitted ? (
-            <div className="contact-success">
-              <h3>Message sent!</h3>
-              <p>Thanks for reaching out. I'll get back to you soon.</p>
+            <div className="about-contact-success">
+              <div className="about-success-icon" aria-hidden="true">
+                <FiCheckCircle size={24} />
+              </div>
+              <h3>Message sent</h3>
+              <p>Thanks for reaching out. I will reply soon.</p>
             </div>
           ) : (
-            <form className="contact-form" onSubmit={handleContactSubmit}>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={contactForm.name}
+            <div className="about-contact-layout">
+              <form className="about-contact-form" onSubmit={handleContactSubmit}>
+                <div className="about-form-row">
+                  <div className="about-form-group">
+                    <label htmlFor="name">Your name</label>
+                    <input
+                      id="name"
+                      name="name"
+                      value={contactForm.name}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="What should I call you?"
+                    />
+                  </div>
+                  <div className="about-form-group">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={contactForm.email}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="about-form-group">
+                  <label htmlFor="message">Your message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={contactForm.message}
                     onChange={handleInputChange}
                     required
-                    className="form-input"
+                    placeholder="Tell me about your plans, ask a question, or just say hi."
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={contactForm.email}
-                    onChange={handleInputChange}
-                    required
-                    className="form-input"
-                  />
+
+                <div className="about-form-footer">
+                  <button className="about-btn about-btn-primary" type="submit">
+                    Send message
+                  </button>
                 </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={contactForm.message}
-                  onChange={handleInputChange}
-                  required
-                  rows="5"
-                  className="form-textarea"
-                  placeholder="Questions, wins, 'I'm terrified but I'm doing it'? Let me know!"
-                ></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Send Message
-              </button>
-            </form>
+              </form>
+
+              <aside className="about-contact-info">
+                <div className="about-info-item">
+                  <div className="about-info-icon" aria-hidden="true">
+                    <FiMail size={20} />
+                  </div>
+                  <div className="about-info-body">
+                    <h4>Email</h4>
+                    <a href="mailto:dinar@seatofmyplans.com">
+                      dinar@seatofmyplans.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="about-info-item">
+                  <div className="about-info-icon" aria-hidden="true">
+                    <FiClock size={20} />
+                  </div>
+                  <div className="about-info-body">
+                    <h4>Availability</h4>
+                    <p>When I'm Awake</p>
+                  </div>
+                </div>
+
+                <div className="about-info-item">
+                  <div className="about-info-icon" aria-hidden="true">
+                    <FiGlobe size={20} />
+                  </div>
+                  <div className="about-info-body">
+                    <h4>Time zone</h4>
+                    <p>Bangkok (GMT+7)</p>
+                  </div>
+                </div>
+              </aside>
+            </div>
           )}
         </div>
       </section>
-    </div>
+    </main>
   );
 }
-
-export default About;

@@ -1,37 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import HomePage from "./components/HomePage";
 import BlogIndex from "./components/BlogIndex";
 import BlogPost from "./components/BlogPost";
 import About from "./components/About";
+import YouTubePage from "./components/YouTubePage";
 import Footer from "./components/Footer";
 
+function parseHash(hash) {
+  const h = hash || window.location.hash || "";
+  if (/^#\/about\/?$/.test(h)) return { page: "about" };
+  if (/^#\/youtube\/?$/.test(h)) return { page: "youtube" };
+  if (/^#\/blog\/?$/.test(h)) return { page: "blog" };
+  const match = h.match(/^#\/blog\/([^/?#]+)/);
+  if (match) return { page: "post", slug: decodeURIComponent(match[1]) };
+  return { page: "home" };
+}
+
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
-  const [currentPost, setCurrentPost] = useState(null);
+  const [{ page, slug }, setRoute] = useState(parseHash());
 
-  const navigateTo = (page, post = null) => {
-    setCurrentPage(page);
-    setCurrentPost(post);
+  // Keep scroll behavior consistent
+  useEffect(() => {
+    const onHash = () => setRoute(parseHash());
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
 
-    // Scroll to top when navigating to a new page
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  // Scroll to top on page/slug change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page, slug]);
+
+  const navigateTo = (nextPage, postOrSlug = null) => {
+    const s =
+      typeof postOrSlug === "string" ? postOrSlug : postOrSlug?.slug || "";
+
+    switch (nextPage) {
+      case "home":
+        window.location.hash = "#/";
+        break;
+      case "about":
+        window.location.hash = "#/about";
+        break;
+      case "youtube":
+        window.location.hash = "#/youtube";
+        break;
+      case "blog":
+        window.location.hash = "#/blog";
+        break;
+      case "post":
+        window.location.hash = s ? `#/blog/${encodeURIComponent(s)}` : "#/blog";
+        break;
+      default:
+        window.location.hash = "#/";
+        break;
+    }
   };
 
-  // Also scroll to top when the component mounts or when currentPage changes
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [currentPage]);
-
-  const renderPage = () => {
-    switch (currentPage) {
+  // Render the current view
+  const view = useMemo(() => {
+    switch (page) {
       case "home":
         return (
           <HomePage
@@ -42,9 +72,10 @@ function App() {
       case "blog":
         return <BlogIndex onPostClick={(post) => navigateTo("post", post)} />;
       case "post":
-        return (
-          <BlogPost post={currentPost} onBack={() => navigateTo("blog")} />
-        );
+        // New slug-based BlogPost component
+        return <BlogPost slug={slug} />;
+      case "youtube":
+        return <YouTubePage />;
       case "about":
         return <About />;
       default:
@@ -55,12 +86,12 @@ function App() {
           />
         );
     }
-  };
+  }, [page, slug]);
 
   return (
     <div className="App">
-      <Header onNavigate={navigateTo} currentPage={currentPage} />
-      <main>{renderPage()}</main>
+      <Header onNavigate={navigateTo} currentPage={page} />
+      <main>{view}</main>
       <Footer />
     </div>
   );

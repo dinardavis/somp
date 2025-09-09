@@ -25,25 +25,46 @@ export default function Footer() {
         <nav className="footer-nav" aria-label="Footer navigation">
           <ul>
             <li>
-              <button className="linklike" onClick={() => (window.location.hash = "")}>
+              <button
+                className="linklike"
+                onClick={() => (window.location.hash = "")}
+              >
                 Home
               </button>
             </li>
             <li>
-              <button className="linklike" onClick={() => (window.location.hash = "#/blog")}>
+              <button
+                className="linklike"
+                onClick={() => (window.location.hash = "#/blog")}
+              >
                 Blog
               </button>
             </li>
             <li>
-              <button className="linklike" onClick={() => (window.location.hash = "#/about")}>
+              <button
+                className="linklike"
+                onClick={() => (window.location.hash = "#/youtube")}
+              >
+                YouTube
+              </button>
+            </li>
+            <li>
+              <button
+                className="linklike"
+                onClick={() => (window.location.hash = "#/about")}
+              >
                 About
               </button>
             </li>
             <li>
-              <a className="linklike" href="mailto:dinar@seatofmyplans.com">Contact</a>
+              <a className="linklike" href="mailto:dinar@seatofmyplans.com">
+                Contact
+              </a>
             </li>
             <li>
-              <a className="linklike" href="#/privacy">Privacy</a>
+              <a className="linklike" href="#/privacy">
+                Privacy
+              </a>
             </li>
           </ul>
         </nav>

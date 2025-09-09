@@ -2,7 +2,6 @@ import React from "react";
 import { FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 
-
 function Header({ onNavigate, currentPage }) {
   return (
     <header className="header">
@@ -24,30 +23,34 @@ function Header({ onNavigate, currentPage }) {
             Blog
           </button>
           <button
+            className={`nav-link ${currentPage === "youtube" ? "active" : ""}`}
+            onClick={() => onNavigate("youtube")}
+          >
+            YouTube
+          </button>
+          <button
             className={`nav-link ${currentPage === "about" ? "active" : ""}`}
             onClick={() => onNavigate("about")}
           >
             About
           </button>
-          <div
-            className="nav-text"
-          >
-            Follow Us: 
-            <a 
-              href="https://www.youtube.com/" target="_blank" 
+          <div className="nav-text">
+            Follow Us:
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
               rel="noreferrer"
               className="nav-link-anchor"
             >
               <FaYoutube className="nav-link nav-icon nav-yt" />
             </a>
-            <a 
-              href="https://www.instagram.com/" target="_blank" 
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
               rel="noreferrer"
               className="nav-link-anchor"
             >
-              <AiFillInstagram 
-                className="nav-link nav-icon nav-ig" 
-              />
+              <AiFillInstagram className="nav-link nav-icon nav-ig" />
             </a>
           </div>
         </nav>

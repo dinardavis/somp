@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NewsletterSignup from "./NewsletterSignup";
 import BlogTeaser from "./BlogTeaser";
+import YouTubeEmbed from "./YouTubeEmbed";
+import { TRAILER_VIDEO_ID, CHANNEL_HANDLE_URL } from "../utils/youtubeData";
 
 function HomePage({ onPostClick, onNavigate }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,12 +42,12 @@ function HomePage({ onPostClick, onNavigate }) {
       <section className="hero">
         <div className="hero-container">
           <div className="hero-left">
-            <h1 className="hero-title">Reboot your life! <br></br><span>(and actually enjoy it)</span></h1>
+            <h1 className="hero-title">
+              Reboot your life! <br></br>
+              <span>(and actually enjoy it)</span>
+            </h1>
             <p className="hero-subtitle">
-              I'm Dinar. I make simple playbooks for big moves—changing cities,
-              changing lanes, changing your mind. I've lived in 11 countries, I
-              mess up publicly, and I share what actually works. Currently
-              reporting from Bangkok, but the lessons travel well.
+              A home base for people who want a bigger life without lighting it on fire. I share real costs, doable steps, and the kind of mindset shifts that survive jet lag. It's not about "finding yourself" on a mountaintop. It's about building a life you actually like—on purpose.
             </p>
           </div>
           <div className="hero-right">
@@ -54,15 +56,54 @@ function HomePage({ onPostClick, onNavigate }) {
         </div>
       </section>
 
-      <section className="about-preview scroll-animate">
-        <div className="about-preview-container">
-
-            <img
-              className="about-image"
-              src="/images/plane-wing.png"
-              alt="Airplane wing against blue sky"
+      <section className="youtube-preview scroll-animate">
+        <div className="youtube-preview-container">
+          <div className="youtube-preview-content">
+            <h2>Follow my journey on YouTube</h2>
+            <p>
+              Short, pragmatic videos on moving abroad, budgeting, and building
+              a life you actually like—minus the guru fluff. Currently reporting
+              from Bangkok; the lessons travel well.
+            </p>
+            <div className="youtube-ctas">
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  onNavigate?.("youtube") ||
+                  (window.location.hash = "#/youtube")
+                }
+              >
+                Watch the trailer
+              </button>
+              <a
+                href={CHANNEL_HANDLE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                aria-label="Visit the channel on YouTube (opens in new tab)"
+              >
+                Visit the channel
+              </a>
+            </div>
+          </div>
+          <div className="youtube-preview-video">
+            <YouTubeEmbed
+              videoId={TRAILER_VIDEO_ID}
+              title="Seat Of My Plans — channel trailer"
+              caption="Seat Of My Plans — channel trailer"
             />
-   
+          </div>
+        </div>
+      </section>
+
+      {/* <section className="about-preview scroll-animate">
+        <div className="about-preview-container">
+          <img
+            className="about-image"
+            src="/images/plane-wing.png"
+            alt="Airplane wing against blue sky"
+          />
+
           <div className="about-content">
             <h2>What You'll Find Here</h2>
             <p>
@@ -74,7 +115,7 @@ function HomePage({ onPostClick, onNavigate }) {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="blog-preview scroll-animate">
         <div className="blog-preview-container">
