@@ -1,9 +1,7 @@
-// About.jsx
 import React, { useEffect, useState } from "react";
 import {
   FiBookOpen,
   FiMapPin,
-  FiPieChart,
   FiFilm,
   FiMail,
   FiClock,
@@ -27,16 +25,20 @@ function AboutSectionHeader({ eyebrow, title, lead }) {
   );
 }
 
-function AboutCard({ icon: Icon, title, children, className = "" }) {
+function AboutCard({ icon: Icon, number, title, children, className = "" }) {
   return (
     <article className={`about-card ${className}`}>
-      {Icon && (
-        <div className="about-card-icon" aria-hidden="true">
-          <Icon size={22} />
-        </div>
-      )}
-      {title && <h3 className="about-card-title">{title}</h3>}
-      <div className="about-card-body">{children}</div>
+      {number && <p className="about-card-number">{number}</p>}
+     
+      <div>
+        {Icon && (
+          <div className="about-card-icon" aria-hidden="true">
+            <Icon size={22} />
+          </div>
+        )}
+        {title && <p className="about-card-title">{title}</p>}
+        <div className="about-card-body">{children}</div>
+      </div> 
     </article>
   );
 }
@@ -191,29 +193,53 @@ export default function About() {
 
       {/* Beliefs */}
       <section className="about-section about-beliefs">
-        <div className="about-section-content">
-          <AboutSectionHeader
-            eyebrow="The philosophy"
-            title="What I believe"
-          />
-          <div className="about-beliefs-grid">
-            <AboutCard title="Fun is a strategy">
-              <p>If it feels miserable, you will not keep doing it.</p>
-            </AboutCard>
-            <AboutCard title="Small bets beat giant leaps">
-              <p>Test, learn, adjust, repeat.</p>
-            </AboutCard>
-            <AboutCard title="Money buys time and options">
-              <p>Build a runway so adventure is a plan, not a panic.</p>
-            </AboutCard>
-            <AboutCard title="Home is a skill">
-              <p>You can learn to build it anywhere.</p>
-            </AboutCard>
-            <AboutCard title="Tell the truth">
-              <p>About costs, visas, loneliness, wins. All of it.</p>
-            </AboutCard>
-          </div>
+        <div className="about-beliefs-grid">
+          <AboutCard number="1" title="Fun is a strategy">
+            <p>Energy outlasts willpower. If it’s enjoyable, you’ll return to it.</p>
+            <ul>
+              <li>Design tasks you actually like doing.</li>
+              <li>Turn chores into simple rituals.</li>
+            </ul>
+            <p className="about-beliefs-tip"><strong>Try this:</strong> Schedule two enjoyable wins each week and track streaks.</p>
+          </AboutCard>
+
+          <AboutCard number="2" title="Small bets beat giant leaps">
+            <p>Move with quick tests and clear stakes.</p>
+            <ul>
+              <li>Cap time and money for each test.</li>
+              <li>Pick one success metric before you start.</li>
+            </ul>
+             <p className="about-beliefs-tip"><strong>Try this:</strong> Run one 7-day test, then keep, cut, or double.</p>
+          </AboutCard>
+
+          <AboutCard number="3" title="Money buys time and options">
+            <p>Runway creates calmer choices and better timing.</p>
+            <ul>
+              <li>Know your baseline burn and update monthly.</li>
+              <li>Set minimum, target, and stretch numbers.</li>
+            </ul>
+             <p className="about-beliefs-tip"><strong>Try this:</strong> Track runway in months and adjust one lever.</p>
+          </AboutCard>
+
+          <AboutCard number="4" title="Home is a skill">
+            <p>Feeling grounded comes from habits you can repeat anywhere.</p>
+            <ul>
+              <li>Find three anchors on day one.</li>
+              <li>Set a simple morning and evening routine.</li>
+            </ul>
+             <p className="about-beliefs-tip"><strong>Try this:</strong> 72-hour checklist: SIM, transit card, two cafes, one workout.</p>
+          </AboutCard>
+
+          <AboutCard number="5" title="Tell the truth">
+            <p>Honest inputs make useful maps for you and others.</p>
+            <ul>
+              <li>Share real costs and exact steps.</li>
+              <li>Note wins along with tradeoffs.</li>
+            </ul>
+             <p className="about-beliefs-tip"><strong>Try this:</strong> Post a monthly field report: what worked, what didn’t, next steps.</p>
+          </AboutCard>
         </div>
+
       </section>
 
       {/* Personal Snapshot */}
