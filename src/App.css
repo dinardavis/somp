@@ -552,7 +552,7 @@ main {
 
 /* Eyebrow + headers */
 .about-eyebrow {
-  font-size: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
@@ -612,6 +612,7 @@ main {
   margin: 0 auto 1rem;
 }
 .about-hero-lead {
+  font-size: 1.2rem;
   color: var(--muted);
 }
 .about-hero-media .about-media {
