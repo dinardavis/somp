@@ -61,9 +61,9 @@ function HomePage({ onPostClick, onNavigate }) {
           <div className="youtube-preview-content">
             <h2>Follow my journey on YouTube</h2>
             <p>
-              Short, pragmatic videos on moving abroad, budgeting, and building
-              a life you actually like—minus the guru fluff. Currently reporting
-              from Bangkok; the lessons travel well.
+              Following the pragmatic steps to pursue moving abroad, budgeting, and building
+              a life you actually like. Currently reporting
+              from Bangkok...I think.
             </p>
             <div className="youtube-ctas">
               <button
