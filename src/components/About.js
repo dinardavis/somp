@@ -29,7 +29,7 @@ function AboutCard({ icon: Icon, number, title, children, className = "" }) {
   return (
     <article className={`about-card ${className}`}>
       {number && <p className="about-card-number">{number}</p>}
-     
+
       <div>
         {Icon && (
           <div className="about-card-icon" aria-hidden="true">
@@ -38,7 +38,7 @@ function AboutCard({ icon: Icon, number, title, children, className = "" }) {
         )}
         {title && <p className="about-card-title">{title}</p>}
         <div className="about-card-body">{children}</div>
-      </div> 
+      </div>
     </article>
   );
 }
@@ -94,22 +94,20 @@ export default function About() {
 
   return (
     <main className="about-page">
-
       {/* Hero */}
       <section className="about-section about-hero">
         <div className="about-section-content about-hero-inner">
           <div className="about-hero-copy">
             <p className="about-eyebrow">About</p>
-            <h1 className="about-hero-title">
-              The guy behind{" "}
-              
-            </h1>
+            <h1 className="about-hero-title">The guy behind </h1>
             <img
-                src="/images/somp.png"
-                alt="Seat Of My Plans"
-                className="about-hero-logo"
-              />
-            <p className="about-hero-lead">Practical moves for a life you enjoy.</p>
+              src="/images/tlsg_logo.png"
+              alt="The Last Survival Guide"
+              className="about-hero-logo"
+            />
+            <p className="about-hero-lead">
+              Practical survival lessons for building a life you like.
+            </p>
           </div>
 
           <div className="about-hero-media">
@@ -138,7 +136,9 @@ export default function About() {
                 className="about-media-img "
               />
               <div className="about-media-tag">
-                <AboutIconPill icon={TbConfetti}>Songkran Festival</AboutIconPill>
+                <AboutIconPill icon={TbConfetti}>
+                  Songkran Festival
+                </AboutIconPill>
               </div>
             </div>
           </div>
@@ -146,19 +146,16 @@ export default function About() {
           <div className="about-col">
             <AboutSectionHeader
               eyebrow="The story"
-              title="Hi, I’m Dinar."
-              lead="Airports were the backdrop. I took my first steps between flights."
+              title="I'm Dinar."
+              lead="Born in Hiroshima, raised in California, lived in 11 countries. In 2022, I left for what was supposed to be a short trip. Two years later, I'm still at it—with more survival lessons than souvenirs."
             />
             <div className="about-prose">
               <p>
-                I was born in Hiroshima and grew up in California. I have lived in 11 countries and visited many more. In 2022 I left for a short trip. It turned into two years and a better way to live.
-              </p>
-              <p>
-                I try things, show the work, and keep what holds up in real life.
+                I try things, show the work, and keep what holds up in real
+                life.
               </p>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -167,25 +164,26 @@ export default function About() {
         <div className="about-section-content">
           <AboutSectionHeader
             eyebrow="The mission"
-            title="What Seat Of My Plans does"
-            lead="Tools and stories for big moves that still feel human."
+            title="TLSG is about applied survival"
+            lead="Practical moves, not abstract advice. I share what I test so you skip the potholes."
           />
           <blockquote className="about-pull-quote">
-            I share the process so you skip a few potholes and get where you’re going sooner.
+            I share the process so you skip a few potholes and get where you're
+            going sooner.
           </blockquote>
 
           <div className="about-feature-grid">
             <AboutCard icon={FiBookOpen} title="Relocation playbooks">
-              <p>Clear steps you can follow and repeat.</p>
+              <p>step-by-step systems you can repeat.</p>
             </AboutCard>
             <AboutCard icon={FiMapPin} title="City cheat sheets">
-              <p>Neighborhoods, costs, and how to land on your feet.</p>
+              <p>neighborhoods, costs, survival hacks.</p>
             </AboutCard>
-            <AboutCard icon={TbPigMoney} title="Budgets and templates">
-              <p>Simple tools that help you decide faster.</p>
+            <AboutCard icon={TbPigMoney} title="Runway & budget tools">
+              <p>make decisions faster.</p>
             </AboutCard>
             <AboutCard icon={FiFilm} title="Videos with real lessons">
-              <p>What worked, what failed, and how I fixed it.</p>
+              <p>what held up, what didn't, what's next.</p>
             </AboutCard>
           </div>
         </div>
@@ -194,52 +192,26 @@ export default function About() {
       {/* Beliefs */}
       <section className="about-section about-beliefs">
         <div className="about-beliefs-grid">
-          <AboutCard number="1" title="Fun is a strategy">
-            <p>Energy outlasts willpower. If it’s enjoyable, you’ll return to it.</p>
-            <ul>
-              <li>Design tasks you actually like doing.</li>
-              <li>Turn chores into simple rituals.</li>
-            </ul>
-            <p className="about-beliefs-tip"><strong>Try this:</strong> Schedule two enjoyable wins each week and track streaks.</p>
+          <AboutCard number="1" title="Energy beats willpower">
+            <p>Build survival routines you'll actually do.</p>
           </AboutCard>
 
-          <AboutCard number="2" title="Small bets beat giant leaps">
-            <p>Move with quick tests and clear stakes.</p>
-            <ul>
-              <li>Cap time and money for each test.</li>
-              <li>Pick one success metric before you start.</li>
-            </ul>
-             <p className="about-beliefs-tip"><strong>Try this:</strong> Run one 7-day test, then keep, cut, or double.</p>
+          <AboutCard number="2" title="Small tests > big bets">
+            <p>Fail cheap, learn fast, move forward.</p>
           </AboutCard>
 
-          <AboutCard number="3" title="Money buys time and options">
-            <p>Runway creates calmer choices and better timing.</p>
-            <ul>
-              <li>Know your baseline burn and update monthly.</li>
-              <li>Set minimum, target, and stretch numbers.</li>
-            </ul>
-             <p className="about-beliefs-tip"><strong>Try this:</strong> Track runway in months and adjust one lever.</p>
+          <AboutCard number="3" title="Money is oxygen">
+            <p>Track your burn, extend your runway.</p>
           </AboutCard>
 
           <AboutCard number="4" title="Home is a skill">
-            <p>Feeling grounded comes from habits you can repeat anywhere.</p>
-            <ul>
-              <li>Find three anchors on day one.</li>
-              <li>Set a simple morning and evening routine.</li>
-            </ul>
-             <p className="about-beliefs-tip"><strong>Try this:</strong> 72-hour checklist: SIM, transit card, two cafes, one workout.</p>
+            <p>Anchor fast with repeatable rituals.</p>
           </AboutCard>
 
           <AboutCard number="5" title="Tell the truth">
-            <p>Honest inputs make useful maps for you and others.</p>
-            <ul>
-              <li>Share real costs and exact steps.</li>
-              <li>Note wins along with tradeoffs.</li>
-            </ul>
-             <p className="about-beliefs-tip"><strong>Try this:</strong> Post a monthly field report: what worked, what didn’t, next steps.</p>
+            <p>Real numbers, real steps, no spin.</p>
           </AboutCard>
         </div>
-
       </section>
 
       {/* Personal Snapshot */}
@@ -249,22 +221,23 @@ export default function About() {
             <AboutSectionHeader eyebrow="The person" title="My kind of day" />
             <div className="about-prose">
               <p>
-                I like a good bar and a quiet pub. I will always pick the strawberry option. Overcast days feel like home.
+                I like a good bar and a quiet pub. I will always pick the
+                strawberry option. Overcast days feel like home.
               </p>
             </div>
 
             <ul className="about-details">
               <li>
                 <span className="about-detail-label">Favorite drink:</span>{" "}
-                <span>Strawberry anything</span>
+                <span>anything strawberry.</span>
               </li>
               <li>
                 <span className="about-detail-label">Current city:</span>{" "}
-                <span>Bangkok, Thailand</span>
+                <span>Bangkok.</span>
               </li>
               <li>
-                <span className="about-detail-label">Weather preference:</span>{" "}
-                <span>Overcast and cozy</span>
+                <span className="about-detail-label">Best weather:</span>{" "}
+                <span>overcast and cozy.</span>
               </li>
             </ul>
           </div>
@@ -276,8 +249,10 @@ export default function About() {
                 alt="Strawberry gelato in Istanbul"
                 className="about-media-img"
               />
-               <div className="about-media-tag">
-                <AboutIconPill icon={LuIceCreamBowl}>Gelato in Istanbul</AboutIconPill>
+              <div className="about-media-tag">
+                <AboutIconPill icon={LuIceCreamBowl}>
+                  Gelato in Istanbul
+                </AboutIconPill>
               </div>
             </div>
           </div>
@@ -289,9 +264,11 @@ export default function About() {
         <div className="about-section-content">
           <div className="about-newsletter-card">
             <div className="about-newsletter-copy">
-              <h2 className="about-section-title">Start your move</h2>
+              <h2 className="about-section-title">Start Your Move</h2>
               <p className="about-section-lead">
-                Join the newsletter and get the Bangkok Starter Kit. I send practical tools, real costs, and small challenges you can finish in a weekend.
+                Join the newsletter and get the Bangkok Starter Kit. Practical
+                tools, real costs, survival challenges you can finish in a
+                weekend.
               </p>
             </div>
 
@@ -318,9 +295,9 @@ export default function About() {
       <section className="about-section about-contact">
         <div className="about-section-content">
           <AboutSectionHeader
-            eyebrow="Let’s connect"
+            eyebrow="Let's connect"
             title="Get in touch"
-            lead="Questions or wins. I read every message."
+            lead="Wins, questions, or survival stories—I read every message."
           />
 
           {isSubmitted ? (
@@ -333,7 +310,10 @@ export default function About() {
             </div>
           ) : (
             <div className="about-contact-layout">
-              <form className="about-contact-form" onSubmit={handleContactSubmit}>
+              <form
+                className="about-contact-form"
+                onSubmit={handleContactSubmit}
+              >
                 <div className="about-form-row">
                   <div className="about-form-group">
                     <label htmlFor="name">Your name</label>
@@ -387,8 +367,8 @@ export default function About() {
                   </div>
                   <div className="about-info-body">
                     <h4>Email</h4>
-                    <a href="mailto:dinar@seatofmyplans.com">
-                      dinar@seatofmyplans.com
+                    <a href="mailto:dinar@thelastsurvivalguide.com">
+                      dinar@thelastsurvivalguide.com
                     </a>
                   </div>
                 </div>
@@ -398,17 +378,7 @@ export default function About() {
                     <FiClock size={20} />
                   </div>
                   <div className="about-info-body">
-                    <h4>Availability</h4>
-                    <p>When I'm Awake</p>
-                  </div>
-                </div>
-
-                <div className="about-info-item">
-                  <div className="about-info-icon" aria-hidden="true">
-                    <FiGlobe size={20} />
-                  </div>
-                  <div className="about-info-body">
-                    <h4>Time zone</h4>
+                    <h4>Timezone</h4>
                     <p>Bangkok (GMT+7)</p>
                   </div>
                 </div>

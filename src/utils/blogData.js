@@ -8,11 +8,11 @@ export const posts = [
   {
     id: 1,
     slug: "runway-math-for-real-humans",
-    title: "Runway Math for Real Humans",
+    title: "Runway Math That Actually Works",
     image: "/images/runway_calculations.png",
     altText: "Man seated at a desktop computer looking frustrated",
     excerpt:
-      "Your money should buy time and options. Here’s how I’d plan a $10–15K runway without living like a monk—or a maniac.",
+      "Your money is your oxygen. Here's how I'd stretch a $10–15K runway without starving or acting like a lunatic.",
     date: "2025-08-15",
     readTime: "5 min read",
     category: "Budgeting",
@@ -41,11 +41,11 @@ export const posts = [
   {
     id: 2,
     slug: "first-30-days-new-city",
-    title: "The First 30 Days in Any New City",
+    title: "Survival Checklist: First 30 Days Anywhere",
     image: "/images/new_arrival.png",
     altText: "City street with morning light",
     excerpt:
-      "A simple checklist to land, settle, and make the place feel yours—faster. Works in Bangkok, Berlin, or Boise.",
+      "How to land, settle, and claim your ground in a new city. Tested in Bangkok, Berlin, and Boise.",
     date: "2025-08-10",
     readTime: "6 min read",
     category: "Playbook",
@@ -74,11 +74,11 @@ export const posts = [
   {
     id: 3,
     slug: "bangkok-condo-hunt-what-i-look-for-and-skip",
-    title: "Bangkok Condo Hunt: What I Look For (and Skip)",
+    title: "Bangkok Condo Hunt: The Hidden Costs",
     image: "/images/bangkok_condo.png",
     altText: "Bangkok skyline with condo buildings",
     excerpt:
-      "Noise, light, location, and the sneaky costs nobody mentions. My current criteria and a few near-miss stories.",
+      "Noise, light, location, and the traps landlords don't mention. My criteria, and my near misses.",
     date: "2025-08-05",
     readTime: "7 min read",
     category: "Housing",
@@ -107,11 +107,11 @@ export const posts = [
   {
     id: 4,
     slug: "the-90-day-dip-and-how-to-beat-it",
-    title: "The 90-Day Dip (and How to Beat It)",
+    title: "The 90-Day Dip (And How to Beat It)",
     image: "/images/sad_gal.png",
     altText: "Person looking out a window on a rainy day",
     excerpt:
-      "Month three is where most people bail. Here’s how to push through the wobble and start actually living.",
+      "Month three is where most people bail. Here's how to push through the wobble and start actually living.",
     date: "2025-07-28",
     readTime: "6 min read",
     category: "Mindset",
@@ -140,11 +140,11 @@ export const posts = [
   {
     id: 5,
     slug: "visa-options-thailand",
-    title: "Visa Options for Thailand: Tourist vs. Education vs. Business",
+    title: "Visa Options in Thailand (Without the Guru Spin)",
     image: "/images/thai_visa.png",
     altText: "Passport with Thai visa",
     excerpt:
-      "A practical overview of common visas and what they’re actually like to live with day-to-day.",
+      "A practical overview of common visas and what they're actually like to live with day-to-day.",
     date: "2024-01-01",
     readTime: "8 min read",
     category: "Legal",
@@ -173,11 +173,11 @@ export const posts = [
   {
     id: 6,
     slug: "building-a-social-life-in-bangkok",
-    title: "Building a Social Life in Bangkok When You Don't Know Anyone",
+    title: "Building a Social Life Abroad When You Don't Know Anyone",
     image: "/images/bangkok_bar.png",
     altText: "People chatting at a cozy bar",
     excerpt:
-      "How to make friends, find your crew, and avoid the expat bubble. Easier than you think—if you’re intentional.",
+      "How to make friends, find your crew, and avoid the expat bubble. Easier than you think—if you're intentional.",
     date: "2023-12-28",
     readTime: "6 min read",
     category: "Social",
@@ -211,9 +211,7 @@ export const getAllPosts = () =>
 
 export const getRecentPosts = (n = 3) => getAllPosts().slice(0, n);
 
-export const getPostBySlug = (slug) =>
-  posts.find((p) => p.slug === slug);
+export const getPostBySlug = (slug) => posts.find((p) => p.slug === slug);
 
 export const getPostById = (id) =>
   posts.find((p) => String(p.id) === String(id));
-

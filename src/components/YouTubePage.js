@@ -65,7 +65,11 @@ export default function YouTubePage() {
       itemListElement: filtered.map((video, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        item: { "@type": "VideoObject", name: video.title, url: getVideoWatchUrl(video.id) },
+        item: {
+          "@type": "VideoObject",
+          name: video.title,
+          url: getVideoWatchUrl(video.id),
+        },
       })),
     };
 
@@ -84,7 +88,10 @@ export default function YouTubePage() {
 
     const s1 = makeScript(videoObjects);
     const s2 = makeScript(itemList);
-    return () => { s1.remove(); s2.remove(); };
+    return () => {
+      s1.remove();
+      s2.remove();
+    };
   }, [filtered]);
 
   const openVideo = (video) => {
@@ -100,10 +107,10 @@ export default function YouTubePage() {
         <div className="ytp-hero-grid ytp-container">
           <div className="ytp-hero-copy">
             <div className="ytp-eyebrow">YouTube</div>
-            <h1 className="ytp-hero-title">Seat Of My Plans</h1>
+            <h1 className="ytp-hero-title">The Last Survival Guide</h1>
             <p className="ytp-hero-lead">
-              Short, useful videos on moving abroad, budgeting, and building a life you actually like.
-              I test in public and keep what works.
+              Short, sharp videos on relocation, money, and survival strategies
+              abroad. I test in public. I keep what works.
             </p>
 
             <div className="ytp-hero-cta">
@@ -114,15 +121,12 @@ export default function YouTubePage() {
                 className="ytp-btn ytp-btn-primary"
                 aria-label="Subscribe on YouTube (opens in new tab)"
               >
-                <FiYoutube 
-                  className="ytp-btn-icon"
-                  aria-hidden="true" 
-                /> Subscribe on YouTube
+                <FiYoutube className="ytp-btn-icon" aria-hidden="true" />{" "}
+                Subscribe on YouTube
               </a>
               <a href="#videos" className="ytp-btn ytp-btn-outline">
-                Browse videos <FiArrowRight 
-                className="ytp-btn-arrow"
-                aria-hidden="true" />
+                Browse videos{" "}
+                <FiArrowRight className="ytp-btn-arrow" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -145,10 +149,10 @@ export default function YouTubePage() {
           {/* Left rail (becomes full-width stacked on mobile) */}
           <aside className="ytp-aside">
             <div className="ytp-aside-card">
-              <h2 className="ytp-aside-title">About this channel</h2>
+              <h2 className="ytp-aside-title">Featured Videos:</h2>
               <p className="ytp-aside-text">
-                Practical moves, clear math, and honest lessons. Planning a relocation or a reset?
-                Start here and pick one small action.
+                Practical breakdowns on moving abroad, surviving the first 90
+                days, and budgeting for a life you can actually enjoy.
               </p>
               <a
                 href={CHANNEL_HANDLE_URL}
@@ -156,14 +160,12 @@ export default function YouTubePage() {
                 rel="noopener noreferrer"
                 className="ytp-btn ytp-btn-secondary"
               >
-                <FiYoutube 
-                  className="ytp-btn-icon"
-                  aria-hidden="true"   
-                /> Subscribe
+                <FiYoutube className="ytp-btn-icon" aria-hidden="true" />{" "}
+                Subscribe
               </a>
             </div>
 
-            {(tags.length > 1) && (
+            {tags.length > 1 && (
               <div className="ytp-aside-card">
                 <div className="ytp-aside-heading">
                   <FiFilter aria-hidden="true" />
@@ -173,7 +175,9 @@ export default function YouTubePage() {
                   {tags.map((t) => (
                     <button
                       key={t}
-                      className={`ytp-chip ${activeTag === t ? "is-active" : ""}`}
+                      className={`ytp-chip ${
+                        activeTag === t ? "is-active" : ""
+                      }`}
                       onClick={() => {
                         setActiveTag(t);
                         setVisibleCount(12);
@@ -200,7 +204,9 @@ export default function YouTubePage() {
                   onClick={() => openVideo(video)}
                   role="button"
                   tabIndex={0}
-                  onKeyDown={(e) => (e.key === "Enter" ? openVideo(video) : null)}
+                  onKeyDown={(e) =>
+                    e.key === "Enter" ? openVideo(video) : null
+                  }
                   aria-label={`Open on YouTube: ${video.title}`}
                 >
                   <div className="ytp-card-media">
@@ -211,8 +217,12 @@ export default function YouTubePage() {
                       width="480"
                       height="270"
                     />
-                    <span className="ytp-badge">{formatDuration(video.durationISO)}</span>
-                    <span className="ytp-card-play"><FiPlay aria-hidden="true" /></span>
+                    <span className="ytp-badge">
+                      {formatDuration(video.durationISO)}
+                    </span>
+                    <span className="ytp-card-play">
+                      <FiPlay aria-hidden="true" />
+                    </span>
                   </div>
                   <div className="ytp-card-body">
                     <h3 className="ytp-card-title">{video.title}</h3>
@@ -242,7 +252,9 @@ export default function YouTubePage() {
             <div className="ytp-more">
               <button
                 className="ytp-btn"
-                onClick={() => setVisibleCount((n) => Math.min(n + 12, filtered.length))}
+                onClick={() =>
+                  setVisibleCount((n) => Math.min(n + 12, filtered.length))
+                }
               >
                 Load more <FiArrowRight aria-hidden="true" />
               </button>

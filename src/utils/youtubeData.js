@@ -22,7 +22,7 @@ export const YOUTUBE_VIDEOS = [
   },
   {
     id: "dQw4w9WgXcQ", // Placeholder ID
-    title: "The 90-Day Rule: Why Most People Fail at Moving Abroad",
+    title: "The 90-Day Rule: Why Most People Fail Abroad",
     description:
       "The three-month slump is real. Here's how to survive it and actually build a life in your new country.",
     uploadDate: "2024-01-05T00:00:00Z",
@@ -30,7 +30,7 @@ export const YOUTUBE_VIDEOS = [
   },
   {
     id: "dQw4w9WgXcQ", // Placeholder ID
-    title: "Visa Options for Thailand: Tourist vs. Education vs. Business",
+    title: "Visa Options for Thailand (Explained Without the Noise)",
     description:
       "A practical guide to staying in Thailand legally without becoming a visa expert.",
     uploadDate: "2024-01-01T00:00:00Z",
@@ -38,7 +38,7 @@ export const YOUTUBE_VIDEOS = [
   },
   {
     id: "dQw4w9WgXcQ", // Placeholder ID
-    title: "Building a Social Life in Bangkok When You Don't Know Anyone",
+    title: "Making Friends Abroad Without Becoming That Expat",
     description:
       "How to make friends, find your tribe, and avoid the expat bubble. It's easier than you think.",
     uploadDate: "2023-12-28T00:00:00Z",

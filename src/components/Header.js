@@ -7,7 +7,7 @@ function Header({ onNavigate, currentPage }) {
     <header className="header">
       <div className="header-container">
         <div className="logo" onClick={() => onNavigate("home")}>
-          <img src="/images/somp.png" alt="seatofmyplans logo" />
+          <img src="/images/tlsg_logo.png" alt="The Last Survival Guide logo" />
         </div>
         <nav className="nav">
           <button

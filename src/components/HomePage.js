@@ -43,11 +43,15 @@ function HomePage({ onPostClick, onNavigate }) {
         <div className="hero-container">
           <div className="hero-left">
             <h1 className="hero-title">
-              Reboot your life! <br></br>
-              <span>(and actually enjoy it)</span>
+              Reboot your life <br></br>
+              <span>(without wrecking it)</span>
             </h1>
             <p className="hero-subtitle">
-              A home base for people who want a bigger life without lighting it on fire. I share real costs, doable steps, and the kind of mindset shifts that survive jet lag. It's not about "finding yourself" on a mountaintop. It's about building a life you actually like—on purpose.
+              A field manual for people who want to live bigger without burning
+              it all down. TLSG shares real numbers, useful playbooks, and the
+              survival mindset you need to thrive in a new place. Not "find
+              yourself on a mountaintop"—just clear steps to make life work,
+              anywhere.
             </p>
           </div>
           <div className="hero-right">
@@ -59,11 +63,11 @@ function HomePage({ onPostClick, onNavigate }) {
       <section className="youtube-preview scroll-animate">
         <div className="youtube-preview-container">
           <div className="youtube-preview-content">
-            <h2>Follow my journey on YouTube</h2>
+            <h2>Follow the field reports on YouTube</h2>
             <p>
-              Following the pragmatic steps to pursue moving abroad, budgeting, and building
-              a life you actually like. Currently reporting
-              from Bangkok...I think.
+              Practical breakdowns on moving abroad, surviving the first 90
+              days, and budgeting for a life you can actually enjoy. Reporting
+              live from Bangkok… for now.
             </p>
             <div className="youtube-ctas">
               <button
@@ -119,7 +123,7 @@ function HomePage({ onPostClick, onNavigate }) {
 
       <section className="blog-preview scroll-animate">
         <div className="blog-preview-container">
-          <h2>Latest from the blog</h2>
+          <h2>Blog Highlights</h2>
           <BlogTeaser onPostClick={onPostClick} onNavigate={onNavigate} />
         </div>
       </section>

@@ -12,11 +12,13 @@ export default function Footer() {
         <div className="footer-brand">
           <img
             className="footer-logo"
-            src="/images/somp.png"
+            src="/images/tlsg_logo.png"
             onClick={() => (window.location.hash = "")}
             aria-label="Go to homepage"
           />
           <p className="footer-tagline">
+            Survival isn't panic—it's preparation.
+            <br />
             Practical courage for a life you enjoy.
           </p>
         </div>
@@ -57,7 +59,10 @@ export default function Footer() {
               </button>
             </li>
             <li>
-              <a className="linklike" href="mailto:dinar@seatofmyplans.com">
+              <a
+                className="linklike"
+                href="mailto:dinar@thelastsurvivalguide.com"
+              >
                 Contact
               </a>
             </li>
@@ -97,9 +102,8 @@ export default function Footer() {
 
       {/* Legal strip */}
       <div className="container footer-legal">
-        <p>©{year} Seat Of My Plans. All rights reserved.</p>
-        <p className="footer-made">Made on the move.</p>
-        <p className="footer-version">v1.0.0</p>
+        <p>©{year} The Last Survival Guide. All rights reserved.</p>
+        <p className="footer-made">Built for the road. Version 1.0.0</p>
       </div>
     </footer>
   );

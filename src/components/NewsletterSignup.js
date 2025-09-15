@@ -30,9 +30,9 @@ function NewsletterSignup() {
         <div className="newsletter-success">
           <h3>Welcome aboard!</h3>
           <p>
-            Check your email for the Bangkok Relocation Starter Kit. You'll also
-            get future freebies like country cheat sheets, tiny-bet challenges,
-            and budgeting tools.
+            Check your email for the Bangkok Relocation Survival Kit. You'll
+            also get future tools like country cheat sheets, mini survival
+            drills, and budgeting templates.
           </p>
         </div>
       </div>
@@ -42,11 +42,13 @@ function NewsletterSignup() {
   return (
     <div className="newsletter-signup">
       <div className="newsletter-header">
-        <h2>Get the <span>Free</span> Starter Kit</h2>
+        <h2>
+          Get the <span>Free</span> Survival Starter Kit
+        </h2>
         <p>
-          Join the newsletter and grab the Bangkok Relocation Starter Kit—plus
-          future freebies like country cheat sheets, tiny-bet challenges, and
-          budgeting tools.
+          Join the newsletter and grab the Bangkok Relocation Survival Kit—plus
+          future tools like country cheat sheets, mini survival drills, and
+          budgeting templates.
         </p>
       </div>
 
@@ -67,7 +69,7 @@ function NewsletterSignup() {
       </form>
 
       <p className="newsletter-note">
-        Zero spam. Occasional bad jokes.<br></br>Unsubscribe anytime.
+        Zero spam. Occasional dark humor.<br></br>Unsubscribe anytime.
       </p>
     </div>
   );
