@@ -8,8 +8,11 @@ import {
   FiGlobe,
   FiCheckCircle,
 } from "react-icons/fi";
-import { TbConfetti, TbPigMoney } from "react-icons/tb";
+import { TbPigMoney } from "react-icons/tb";
+import { PiCheers } from "react-icons/pi";
+import { BsFillLuggageFill } from "react-icons/bs";
 import { LuIceCreamBowl } from "react-icons/lu";
+import IconPill from "./IconPill";
 
 function AboutEyebrow({ children }) {
   return <p className="about-eyebrow">{children}</p>;
@@ -27,7 +30,7 @@ function AboutSectionHeader({ eyebrow, title, lead }) {
 
 function AboutCard({ icon: Icon, number, title, children, className = "" }) {
   return (
-    <article className={`about-card ${className}`}>
+    <article className={`${className}`}>
       {number && <p className="about-card-number">{number}</p>}
 
       <div>
@@ -43,16 +46,7 @@ function AboutCard({ icon: Icon, number, title, children, className = "" }) {
   );
 }
 
-function AboutIconPill({ icon: Icon, children }) {
-  return (
-    <span className="about-icon-pill">
-      <span className="about-icon" aria-hidden="true">
-        <Icon size={16} />
-      </span>
-      <span>{children}</span>
-    </span>
-  );
-}
+
 
 export default function About() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -114,11 +108,11 @@ export default function About() {
             <div className="about-media">
               <img
                 src="/images/me_cheers.jpg"
-                alt="Dinar in Bangkok"
+                alt="Dinar Bangkok"
                 className="about-media-img"
               />
               <div className="about-media-tag">
-                <AboutIconPill icon={FiMapPin}>Bangkok, Thailand</AboutIconPill>
+                <IconPill icon={PiCheers}>Cheers from Bangkok!</IconPill>
               </div>
             </div>
           </div>
@@ -129,16 +123,16 @@ export default function About() {
       <section className="about-section about-story about-section--white">
         <div className="about-section-content about-split">
           <div className="about-col">
-            <div className="about-media about-media--tall the-story-img">
+            <div className="about-media the-story-img">
               <img
-                src="/images/me_songkran.png"
-                alt="Dinar at Songkran"
+                src="/images/tlsg_map.png"
+                alt="Dot matrix map"
                 className="about-media-img "
               />
               <div className="about-media-tag">
-                <AboutIconPill icon={TbConfetti}>
-                  Songkran Festival
-                </AboutIconPill>
+                <IconPill icon={BsFillLuggageFill}>
+                  Some Places I've Lived
+                </IconPill>
               </div>
             </div>
           </div>
@@ -173,16 +167,32 @@ export default function About() {
           </blockquote>
 
           <div className="about-feature-grid">
-            <AboutCard icon={FiBookOpen} title="Relocation playbooks">
+            <AboutCard
+              icon={FiBookOpen}
+              title="Relocation playbooks"
+              className="about-feature-card"
+            >
               <p>step-by-step systems you can repeat.</p>
             </AboutCard>
-            <AboutCard icon={FiMapPin} title="City cheat sheets">
+            <AboutCard
+              icon={FiMapPin}
+              title="City cheat sheets"
+              className="about-feature-card"
+            >
               <p>neighborhoods, costs, survival hacks.</p>
             </AboutCard>
-            <AboutCard icon={TbPigMoney} title="Runway & budget tools">
+            <AboutCard
+              icon={TbPigMoney}
+              title="Runway & budget tools"
+              className="about-feature-card"
+            >
               <p>make decisions faster.</p>
             </AboutCard>
-            <AboutCard icon={FiFilm} title="Videos with real lessons">
+            <AboutCard
+              icon={FiFilm}
+              title="Videos with real lessons"
+              className="about-feature-card"
+            >
               <p>what held up, what didn't, what's next.</p>
             </AboutCard>
           </div>
@@ -192,23 +202,43 @@ export default function About() {
       {/* Beliefs */}
       <section className="about-section about-beliefs">
         <div className="about-beliefs-grid">
-          <AboutCard number="1" title="Energy beats willpower">
+          <AboutCard
+            number="1"
+            title="Energy beats willpower"
+            className="about-belief-card"
+          >
             <p>Build survival routines you'll actually do.</p>
           </AboutCard>
 
-          <AboutCard number="2" title="Small tests > big bets">
+          <AboutCard
+            number="2"
+            title="Small tests > big bets"
+            className="about-belief-card"
+          >
             <p>Fail cheap, learn fast, move forward.</p>
           </AboutCard>
 
-          <AboutCard number="3" title="Money is oxygen">
+          <AboutCard
+            number="3"
+            title="Money is oxygen"
+            className="about-belief-card"
+          >
             <p>Track your burn, extend your runway.</p>
           </AboutCard>
 
-          <AboutCard number="4" title="Home is a skill">
+          <AboutCard
+            number="4"
+            title="Home is a skill"
+            className="about-belief-card"
+          >
             <p>Anchor fast with repeatable rituals.</p>
           </AboutCard>
 
-          <AboutCard number="5" title="Tell the truth">
+          <AboutCard
+            number="5"
+            title="Tell the truth"
+            className="about-belief-card"
+          >
             <p>Real numbers, real steps, no spin.</p>
           </AboutCard>
         </div>
@@ -229,7 +259,7 @@ export default function About() {
             <ul className="about-details">
               <li>
                 <span className="about-detail-label">Favorite drink:</span>{" "}
-                <span>anything strawberry.</span>
+                <span>Anything strawberry.</span>
               </li>
               <li>
                 <span className="about-detail-label">Current city:</span>{" "}
@@ -237,7 +267,7 @@ export default function About() {
               </li>
               <li>
                 <span className="about-detail-label">Best weather:</span>{" "}
-                <span>overcast and cozy.</span>
+                <span>Foggy and cozy.</span>
               </li>
             </ul>
           </div>
@@ -250,9 +280,9 @@ export default function About() {
                 className="about-media-img"
               />
               <div className="about-media-tag">
-                <AboutIconPill icon={LuIceCreamBowl}>
+                <IconPill icon={LuIceCreamBowl}>
                   Gelato in Istanbul
-                </AboutIconPill>
+                </IconPill>
               </div>
             </div>
           </div>

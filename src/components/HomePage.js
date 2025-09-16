@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import NewsletterSignup from "./NewsletterSignup";
 import BlogTeaser from "./BlogTeaser";
 import YouTubeEmbed from "./YouTubeEmbed";
+import IconPill from "./IconPill";
+import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import { TRAILER_VIDEO_ID, CHANNEL_HANDLE_URL } from "../utils/youtubeData";
 
 function HomePage({ onPostClick, onNavigate }) {
@@ -43,9 +45,21 @@ function HomePage({ onPostClick, onNavigate }) {
         <div className="hero-container">
           <div className="hero-left">
             <h1 className="hero-title">
-              Reboot your life <br></br>
+              The Guide to Rebooting Your Life <br></br>
               <span>(without wrecking it)</span>
             </h1>
+                      <div className="hero-media hero-media-img">
+              <img
+                src="/images/me_peace.jpg"
+                alt="Dinar at the airport"
+                className="hero-media-img"
+              />
+              <div className="about-media-tag">
+                <IconPill icon={FaPersonWalkingLuggage}>
+                  On the road again!
+                </IconPill>
+              </div>
+            </div>
             <p className="hero-subtitle">
               A field manual for people who want to live bigger without burning
               it all down. TLSG shares real numbers, useful playbooks, and the

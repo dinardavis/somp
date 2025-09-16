@@ -281,7 +281,7 @@ main {
 }
 
 .logo img {
-  height: 65px;
+  height: 85px;
   width: auto;
   transition: var(--transition-fast);
   cursor: pointer;
@@ -496,6 +496,11 @@ main {
 }
 
 .hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   max-width: 500px;
   margin-right: 0.5rem;
 }
@@ -507,18 +512,18 @@ main {
 
 .hero-title {
   font-family: "Playfair Display", serif;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(3rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--ink);
   margin-bottom: var(--space-4);
-  line-height: 1.1;
+  line-height: .9;
   letter-spacing: -0.02em;
   animation: fadeInUp 1s ease-out 0.2s both;
 }
 
 .hero-title span {
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 2vw, 2rem);
   font-weight: 400;
   color: var(--primary);
   margin-bottom: var(--space-4);
@@ -528,15 +533,27 @@ main {
 
 .hero-subtitle {
   font-family: "Inter", sans-serif;
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   color: var(--neutral-600);
-  margin-bottom: var(--space-6);
   line-height: 1.7;
   font-weight: 400;
-  max-width: 65ch;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 55ch;
   animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-media {
+  position: relative;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--line);
+  aspect-ratio: 3 / 4;
+  max-height: 300px;
+  box-shadow: var(--shadow-m);
+}
+.hero-media-img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .social-proof {
@@ -550,7 +567,7 @@ main {
 /* Newsletter */
 .newsletter-signup {
   background: var(--card);
-  padding: var(--space-6);
+  padding: var(--space-5);
   border-radius: var(--radius-xl);
   box-shadow: 0 20px 40px rgba(137, 26, 27, 0.08);
   border: 1px solid var(--neutral-200);
@@ -577,7 +594,7 @@ main {
 .newsletter-header h2 {
   font-family: "Nunito", sans-serif;
   text-transform: uppercase;
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(2rem, 2vw, 2.6rem);
   font-weight: 1000;
   color: var(--ink);
   margin-bottom: var(--space-2);
@@ -592,7 +609,7 @@ main {
 
 .newsletter-header p {
   color: var(--muted);
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.2;
 }
 
@@ -605,9 +622,13 @@ main {
   margin-bottom: var(--space-3);
 }
 
+.newsletter-input {
+  padding: .5rem;
+}
+
 .form-input {
   width: 100%;
-  padding: 1rem 1.25rem;
+  padding: 1.5rem 1.25rem;
   border: 2px solid var(--line);
   border-radius: var(--radius-m);
   font-size: 1rem;
@@ -732,7 +753,7 @@ main {
   margin-bottom: var(--space-2);
 }
 .about-hero-logo {
-  height: 7rem;
+  height: 10rem;
   transform: translateY(0.1em);
   margin: 0 auto 1rem;
 }
@@ -764,6 +785,7 @@ main {
   object-fit: cover;
 }
 .about-media.the-story-img {
+  background-color: var(--tint-cream);
   margin: 0 auto;
 }
 .about-media.the-person-img {
@@ -807,7 +829,13 @@ main {
 }
 
 /* Cards */
-.about-card {
+.about-card ul {
+  list-style: inside;
+  list-style-type: circle;
+}
+
+/* Feature cards - inherit base about-card styles */
+.about-feature-card {
   display: flex;
   align-items: center;
   background: var(--card);
@@ -816,11 +844,10 @@ main {
   padding: var(--card-p);
   height: 100%;
 }
-.about-card ul {
-  list-style: inside;
-  list-style-type: circle;
-}
-.about-beliefs-grid .about-card {
+
+.about-belief-card {
+  display: flex;
+  align-items: center;
   background: var(--accent-3);
   color: var(--card);
   border-radius: var(--radius-l);
@@ -829,7 +856,7 @@ main {
   margin: 0.5rem 0;
   height: 100%;
 }
-.about-beliefs-grid .about-card .about-card-title {
+.about-belief-card .about-card-title {
   font-size: 1.5rem;
   margin-bottom: 0.2rem;
 }
@@ -844,14 +871,42 @@ main {
   font-weight: 700;
   -webkit-text-stroke: 1px var(--neutral-700);
 }
+
+.about-belief-card .about-card-number {
+  color: var(--accent-3);
+  -webkit-text-stroke: 1px var(--neutral-700);
+}
+.about-belief-card p {
+  margin-bottom: 0;
+}
 .about-card-icon {
   color: var(--accent-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Feature card icons */
+.about-feature-card .about-card-icon {
+  color: var(--accent-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Belief card icons */
+.about-belief-card .about-card-icon {
+  color: var(--card);
   margin-bottom: var(--space-2);
 }
 .about-card-title {
   font-weight: 700;
   margin-bottom: var(--space-1);
 }
+
+/* Feature card titles */
+.about-feature-card .about-card-title {
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+/* Belief card titles - already defined above with specific styling */
 .about-beliefs-tip {
   padding-bottom: 0.7rem;
 }
@@ -2826,7 +2881,7 @@ main {
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: var(--space-4);
+  padding: var(--space-2);
   border: 2px solid var(--line);
   border-radius: var(--radius-m);
   font-size: 1rem;
@@ -2974,6 +3029,10 @@ main {
 
 .footer-tagline {
   color: var(--muted);
+}
+
+p.footer-tagline {
+  margin-bottom: 0;
 }
 
 .footer-nav ul {

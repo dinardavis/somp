@@ -56,7 +56,7 @@ function NewsletterSignup() {
         <div className="form-group">
           <input
             type="email"
-            className={`form-input ${error ? "error" : ""}`}
+            className={`newsletter-input form-input ${error ? "error" : ""}`}
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
